@@ -18,10 +18,23 @@ class Controller:
         self.epoca_selezionata = None
 
     # POPOLA DROPDOWN
-    # TODO
+    def inserisci_valori_museo(self):
+        musei = self._model.get_musei()
+        self._view.drop_down_museo.options.append(ft.dropdown.Option("Nessun filtro"))
+        for i in musei:
+            self._view.drop_down_museo.options.append(ft.dropdown.Option(i))
+
+    def inserisci_epoca(self):
+        epoca = self._model.get_epoche()
+        self._view.drop_down_epoca.options.append(ft.dropdown.Option("Nessun filtro"))
+        for i in epoca:
+            self._view.drop_down_epoca.options.append(ft.dropdown.Option(i))
 
     # CALLBACKS DROPDOWN
-    # TODO
+
 
     # AZIONE: MOSTRA ARTEFATTI
-    # TODO
+    def mostra_artefatti(self,e):
+        self._model.get_artefatti_filtrati(self.museo_selezionato, self.epoca_selezionata)
+
+

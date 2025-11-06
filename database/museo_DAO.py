@@ -10,4 +10,16 @@ class MuseoDAO:
     def __init__(self):
         pass
 
-    # TODO
+    def accesso_dati(self):
+        lista = []
+        cnx = ConnessioneDB.get_connection()
+        cursore = cnx.cursor(dictionary=True)
+        query = "SELECT * FROM museo"
+        cursore.execute(query)
+        for museo in cursore:
+            id= museo['id']
+            nome= museo['nome']
+            tipologia= museo['tipologia']
+            oggetto = Museo(id, nome, tipologia)
+            lista.append(oggetto)
+        return lista
