@@ -20,6 +20,6 @@ class MuseoDAO:
             id= museo['id']
             nome= museo['nome']
             tipologia= museo['tipologia']
-            oggetto = Museo(id, nome, tipologia)
+            oggetto = Museo(id, nome, tipologia)  ##creo oggetto museo
             lista.append(oggetto)
         return lista

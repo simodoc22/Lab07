@@ -33,8 +33,15 @@ class Controller:
     # CALLBACKS DROPDOWN
 
 
+
     # AZIONE: MOSTRA ARTEFATTI
     def mostra_artefatti(self,e):
-        self._model.get_artefatti_filtrati(self.museo_selezionato, self.epoca_selezionata)
+        self._view.lista_artefatti.clean()  ##elimino precedente ricerca
+        lista = self._model.get_artefatti_filtrati(self._view.drop_down_museo.value,self._view.drop_down_epoca.value)
+        for i in lista:
+            self._view.lista_artefatti.controls.append(ft.Text(i))
+        self._view.page.update()   ##aggiorno la pagina
+
+
 
 
